@@ -1,4 +1,4 @@
-//tpfpdrpxl zhem
+
 
 import java.io.BufferedReader;
 
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 import java.net.URL;
 
-public class GetWeather {
+public class GetTest1 {
 
 	public static void main(String[] args) {
 

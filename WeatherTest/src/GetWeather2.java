@@ -16,21 +16,21 @@ public class GetWeather2 {
             Scanner in = new Scanner(System.in);
             System.out.print("어떤 도시의 날씨를 알고 싶습니까?");
             String city = in.next();
-          //  &lang=kr
+         
             //OpenAPI call하는 URL
             String urlstr = "http://api.openweathermap.org/data/2.5/weather?"
-                        + "q="+city 
+                        + "q=" + city 
                         +"&appid=ee82ccb182bb4db853249cd84cd42708\r\n"
                         + "";
             
-            //https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+           
             
             URL url = new URL(urlstr);
             BufferedReader bf;
             String line;
             String result = "";
 
-            //날씨 정보를 받아온다.
+            //날씨 정보를 받아오기
             bf = new BufferedReader(new InputStreamReader(url.openStream()));
 
             //버퍼에 있는 정보를 문자열로 변환.
