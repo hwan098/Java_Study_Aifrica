@@ -1,41 +1,30 @@
-import java.util.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-/*
- lat/lon :위도 경도
- appid : API KEY
- lang : 언어설정
- */
-public class GetTest1 {
+
+public class GetSeoulWeather {
     public static void main(String[] args) {
         try{
-            Scanner in = new Scanner(System.in);
-            System.out.print("어떤 도시의 날씨를 알고 싶습니까?");
-            String city = in.next();
-         
+            //서울시청의 위도와 경도
+            String lon = "126.977948";  //경도
+            String lat = "37.566386";   //위도
+
             //OpenAPI call하는 URL
-            String urlstr = "http://api.openweathermap.org/data/2.5/weather?"
-                        + "q=" + city 
-                        +"&appid=ee82ccb182bb4db853249cd84cd42708\r\n"
-                        + "";
-            
-           
-            
+            String urlstr = "https://api.openweathermap.org/data/2.5/weather?lat="+ lat + "&lon=" + lon +"&appid=ee82ccb182bb4db853249cd84cd42708";
             URL url = new URL(urlstr);
             BufferedReader bf;
             String line;
-            String result = "";
+            String result="";
 
-            //날씨 정보를 받아오기
+            //날씨 정보를 받아온다.
             bf = new BufferedReader(new InputStreamReader(url.openStream()));
 
             //버퍼에 있는 정보를 문자열로 변환.
-            while((line = bf.readLine()) != null){
-                result = result.concat(line);
+            while((line=bf.readLine())!=null){
+                result=result.concat(line);
                 //System.out.println(line);
             }
 
@@ -58,11 +47,8 @@ public class GetTest1 {
             System.out.printf("온도 : %.2f\n",temp);
 
             bf.close();
-            
         }catch(Exception e){
-            //System.out.println(e.getMessage());
-            System.out.println("지원하지 않거나 없는 도시입니다.");
-            
+            System.out.println(e.getMessage());
         }
     }
 }
